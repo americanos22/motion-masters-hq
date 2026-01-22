@@ -27,9 +27,9 @@ const Header = ({ onCartClick, onSearchClick, cartCount = 0 }: HeaderProps) => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="Cheese Motion" className="h-10 w-10 md:h-12 md:w-12 rounded-lg" />
+            <img src={logo} alt="Digital Work" className="h-10 w-10 md:h-12 md:w-12 rounded-lg" />
             <span className="font-display text-xl md:text-2xl font-bold tracking-tight hidden sm:block">
-              CHEESE MOTION
+              DIGITAL WORK
             </span>
           </Link>
 
