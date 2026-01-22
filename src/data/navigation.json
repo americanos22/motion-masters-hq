@@ -2,8 +2,10 @@
   "mainNav": [
     { "label": "Home", "href": "/" },
     { "label": "Categories", "href": "/categories" },
-    { "label": "Best Sellers", "href": "/category/best-sellers" },
-    { "label": "New Releases", "href": "/category/new-release" }
+    { "label": "How It Works", "href": "/how-it-works" },
+    { "label": "FAQ", "href": "/faq" },
+    { "label": "About", "href": "/about" },
+    { "label": "Contact", "href": "/contact" }
   ],
   "footerLinks": {
     "shop": [
@@ -17,7 +19,7 @@
       { "label": "Contact Us", "href": "/contact" },
       { "label": "FAQ", "href": "/faq" },
       { "label": "How It Works", "href": "/how-it-works" },
-      { "label": "Track Order", "href": "/track-order" }
+      { "label": "About Us", "href": "/about" }
     ],
     "legal": [
       { "label": "Refund Policy", "href": "/refund-policy" },
