@@ -15,12 +15,15 @@ import {
 } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
+import productsData from '@/data/products.json';
+import pricingData from '@/data/pricing.json';
+import siteData from '@/data/site.json';
 import sampleVideo1 from '@/assets/sample-video-1.jpg';
 import sampleVideo2 from '@/assets/sample-video-2.jpg';
 import sampleVideo3 from '@/assets/sample-video-3.jpg';
 
 const Product = () => {
-  const { id } = useParams<{ id: string }>();
+  const { slug } = useParams<{ slug: string }>();
   const [rushDelivery, setRushDelivery] = useState(false);
   const [addText, setAddText] = useState(false);
   const [textValue, setTextValue] = useState('');
@@ -31,20 +34,21 @@ const Product = () => {
 
   const images = [sampleVideo1, sampleVideo2, sampleVideo3];
   
-  // Pricing
-  const basePrice = 29;
-  const rushDeliveryPrice = 8;
-  const addTextPrice = 9;
-  const upgrade4KPrice = 15;
-  const extraRevisionPrice = 12;
-  const backgroundMusicPrice = backgroundMusic !== 'default' ? 5 : 0;
+  // Find product from data
+  const product = productsData.products.find(p => p.slug === slug);
+  const productName = product?.name || `Sample ${slug}`;
+  
+  // Pricing from centralized data
+  const basePrice = product?.price || 29;
+  const { addons, musicOptions } = pricingData;
+  const backgroundMusicPrice = backgroundMusic !== 'default' ? addons.backgroundMusic.price : 0;
 
   const totalPrice =
     basePrice +
-    (rushDelivery ? rushDeliveryPrice : 0) +
-    (addText ? addTextPrice : 0) +
-    (upgrade4K ? upgrade4KPrice : 0) +
-    (extraRevision ? extraRevisionPrice : 0) +
+    (rushDelivery ? addons.rushDelivery.price : 0) +
+    (addText ? addons.addText.price : 0) +
+    (upgrade4K ? addons.upgrade4K.price : 0) +
+    (extraRevision ? addons.extraRevision.price : 0) +
     backgroundMusicPrice;
 
   const OptionButton = ({
@@ -134,15 +138,15 @@ const Product = () => {
             {/* Right Column - Product Info */}
             <div>
               <h1 className="font-display text-3xl md:text-4xl font-bold mb-4">
-                Sample {id || '1289'}
+                {productName}
               </h1>
 
               {/* Price */}
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-3xl font-bold text-secondary">${basePrice}</span>
-                <span className="text-xl text-muted-foreground line-through">$49</span>
+                <span className="text-xl text-muted-foreground line-through">${product?.originalPrice || 49}</span>
                 <span className="bg-secondary/10 text-secondary text-sm font-bold px-3 py-1 rounded-full">
-                  Save 40%
+                  Save {Math.round(((product?.originalPrice || 49) - basePrice) / (product?.originalPrice || 49) * 100)}%
                 </span>
               </div>
 
@@ -152,28 +156,28 @@ const Product = () => {
                   <Clock className="w-5 h-5 text-primary" />
                   <div>
                     <p className="text-sm text-muted-foreground">Duration</p>
-                    <p className="font-semibold">00:10</p>
+                    <p className="font-semibold">{siteData.productSpecs.duration}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <Monitor className="w-5 h-5 text-primary" />
                   <div>
                     <p className="text-sm text-muted-foreground">Resolution</p>
-                    <p className="font-semibold">1080p HD</p>
+                    <p className="font-semibold">{siteData.productSpecs.resolution}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <FileVideo className="w-5 h-5 text-primary" />
                   <div>
                     <p className="text-sm text-muted-foreground">Format</p>
-                    <p className="font-semibold">.mp4</p>
+                    <p className="font-semibold">{siteData.productSpecs.format}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <Zap className="w-5 h-5 text-primary" />
                   <div>
                     <p className="text-sm text-muted-foreground">Turnaround</p>
-                    <p className="font-semibold">72 hours</p>
+                    <p className="font-semibold">{siteData.productSpecs.turnaround}</p>
                   </div>
                 </div>
               </div>
@@ -197,12 +201,12 @@ const Product = () => {
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <label className="font-display font-semibold">
-                      Rush Delivery
+                      {addons.rushDelivery.name}
                     </label>
-                    <span className="text-secondary font-bold">+${rushDeliveryPrice}</span>
+                    <span className="text-secondary font-bold">+${addons.rushDelivery.price}</span>
                   </div>
                   <p className="text-sm text-muted-foreground mb-3">
-                    Get your video delivered within 24 hours
+                    {addons.rushDelivery.description}
                   </p>
                   <div className="flex gap-3">
                     <OptionButton
@@ -225,12 +229,12 @@ const Product = () => {
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <label className="font-display font-semibold">
-                      Add Text to Logo
+                      {addons.addText.name}
                     </label>
-                    <span className="text-secondary font-bold">+${addTextPrice}</span>
+                    <span className="text-secondary font-bold">+${addons.addText.price}</span>
                   </div>
                   <p className="text-sm text-muted-foreground mb-3">
-                    Add your company name or tagline
+                    {addons.addText.description}
                   </p>
                   <div className="flex gap-3 mb-3">
                     <OptionButton
@@ -262,12 +266,12 @@ const Product = () => {
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <label className="font-display font-semibold">
-                      Upscale to 4K
+                      {addons.upgrade4K.name}
                     </label>
-                    <span className="text-secondary font-bold">+${upgrade4KPrice}</span>
+                    <span className="text-secondary font-bold">+${addons.upgrade4K.price}</span>
                   </div>
                   <p className="text-sm text-muted-foreground mb-3">
-                    Get ultra-high definition 4K video output
+                    {addons.upgrade4K.description}
                   </p>
                   <div className="flex gap-3">
                     <OptionButton
@@ -290,12 +294,12 @@ const Product = () => {
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <label className="font-display font-semibold">
-                      Extra Revision
+                      {addons.extraRevision.name}
                     </label>
-                    <span className="text-secondary font-bold">+${extraRevisionPrice}</span>
+                    <span className="text-secondary font-bold">+${addons.extraRevision.price}</span>
                   </div>
                   <p className="text-sm text-muted-foreground mb-3">
-                    Get one additional revision after delivery
+                    {addons.extraRevision.description}
                   </p>
                   <div className="flex gap-3">
                     <OptionButton
@@ -318,14 +322,14 @@ const Product = () => {
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <label className="font-display font-semibold">
-                      Background Music
+                      {addons.backgroundMusic.name}
                     </label>
                     {backgroundMusic !== 'default' && (
-                      <span className="text-secondary font-bold">+$5</span>
+                      <span className="text-secondary font-bold">+${addons.backgroundMusic.price}</span>
                     )}
                   </div>
                   <p className="text-sm text-muted-foreground mb-3">
-                    Change the background music track
+                    {addons.backgroundMusic.description}
                   </p>
                   <div className="relative">
                     <select
@@ -333,11 +337,11 @@ const Product = () => {
                       onChange={(e) => setBackgroundMusic(e.target.value)}
                       className="input-styled appearance-none pr-10"
                     >
-                      <option value="default">Default Music (Free)</option>
-                      <option value="epic">Epic Cinematic (+$5)</option>
-                      <option value="corporate">Corporate Upbeat (+$5)</option>
-                      <option value="minimal">Minimal Tech (+$5)</option>
-                      <option value="none">No Music (+$5)</option>
+                      {musicOptions.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label} {option.price > 0 ? `(+$${option.price})` : ''}
+                        </option>
+                      ))}
                     </select>
                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
                   </div>

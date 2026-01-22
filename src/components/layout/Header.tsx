@@ -3,13 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Search, User, ShoppingCart, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import logo from '@/assets/logo.png';
-
-const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Categories', href: '/categories' },
-  { label: 'Best Sellers', href: '/collection/best-sellers' },
-  { label: 'New Releases', href: '/collection/new-release' },
-];
+import navigationData from '@/data/navigation.json';
 
 interface HeaderProps {
   onCartClick?: () => void;
@@ -35,7 +29,7 @@ const Header = ({ onCartClick, onSearchClick, cartCount = 0 }: HeaderProps) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
+            {navigationData.mainNav.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
@@ -97,7 +91,7 @@ const Header = ({ onCartClick, onSearchClick, cartCount = 0 }: HeaderProps) => {
         {mobileMenuOpen && (
           <nav className="lg:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-2">
-              {navLinks.map((link) => (
+              {navigationData.mainNav.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}

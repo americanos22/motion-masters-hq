@@ -9,7 +9,7 @@ interface CategoryCardProps {
 
 const CategoryCard = ({ name, slug, image, count }: CategoryCardProps) => {
   return (
-    <Link to={`/collection/${slug}`} className="category-card block">
+    <Link to={`/category/${slug}`} className="category-card block">
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
           src={image}

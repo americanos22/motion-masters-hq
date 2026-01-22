@@ -1,0 +1,35 @@
+{
+  "products": [
+    { "id": 1, "slug": "fire-explosion", "name": "Fire Explosion", "categorySlug": "fire", "image": "/assets/sample-video-1.jpg", "price": 29, "originalPrice": 49 },
+    { "id": 2, "slug": "neon-glitch", "name": "Neon Glitch", "categorySlug": "neon", "image": "/assets/sample-video-2.jpg", "price": 24, "originalPrice": 39 },
+    { "id": 3, "slug": "diamond-shatter", "name": "Diamond Shatter", "categorySlug": "diamond", "image": "/assets/sample-video-3.jpg", "price": 34, "originalPrice": 55 },
+    { "id": 4, "slug": "electric-energy", "name": "Electric Energy", "categorySlug": "glitch", "image": "/assets/sample-video-4.jpg", "price": 29, "originalPrice": 47 },
+    { "id": 5, "slug": "smoke-reveal", "name": "Smoke Reveal", "categorySlug": "smoke", "image": "/assets/sample-video-5.jpg", "price": 34, "originalPrice": 55 },
+    { "id": 6, "slug": "gold-particles", "name": "Gold Particles", "categorySlug": "gold", "image": "/assets/sample-video-6.jpg", "price": 39, "originalPrice": 63 },
+    { "id": 7, "slug": "sample-1100", "name": "Sample 1100", "categorySlug": "best-sellers", "image": "/assets/sample-video-1.jpg", "price": 24, "originalPrice": 39 },
+    { "id": 8, "slug": "sample-1101", "name": "Sample 1101", "categorySlug": "best-sellers", "image": "/assets/sample-video-2.jpg", "price": 29, "originalPrice": 47 },
+    { "id": 9, "slug": "sample-1102", "name": "Sample 1102", "categorySlug": "best-sellers", "image": "/assets/sample-video-3.jpg", "price": 34, "originalPrice": 55 },
+    { "id": 10, "slug": "sample-1103", "name": "Sample 1103", "categorySlug": "best-sellers", "image": "/assets/sample-video-4.jpg", "price": 39, "originalPrice": 63 },
+    { "id": 11, "slug": "sample-1104", "name": "Sample 1104", "categorySlug": "best-sellers", "image": "/assets/sample-video-5.jpg", "price": 44, "originalPrice": 71 },
+    { "id": 12, "slug": "sample-1105", "name": "Sample 1105", "categorySlug": "best-sellers", "image": "/assets/sample-video-6.jpg", "price": 24, "originalPrice": 39 },
+    { "id": 13, "slug": "sample-1106", "name": "Sample 1106", "categorySlug": "new-release", "image": "/assets/sample-video-1.jpg", "price": 29, "originalPrice": 47 },
+    { "id": 14, "slug": "sample-1107", "name": "Sample 1107", "categorySlug": "new-release", "image": "/assets/sample-video-2.jpg", "price": 34, "originalPrice": 55 },
+    { "id": 15, "slug": "sample-1108", "name": "Sample 1108", "categorySlug": "new-release", "image": "/assets/sample-video-3.jpg", "price": 39, "originalPrice": 63 },
+    { "id": 16, "slug": "sample-1109", "name": "Sample 1109", "categorySlug": "new-release", "image": "/assets/sample-video-4.jpg", "price": 44, "originalPrice": 71 },
+    { "id": 17, "slug": "sample-1110", "name": "Sample 1110", "categorySlug": "cgi", "image": "/assets/sample-video-5.jpg", "price": 24, "originalPrice": 39 },
+    { "id": 18, "slug": "sample-1111", "name": "Sample 1111", "categorySlug": "cgi", "image": "/assets/sample-video-6.jpg", "price": 29, "originalPrice": 47 }
+  ],
+  "featuredVideos": [
+    { "id": 1, "image": "/assets/sample-video-1.jpg", "title": "Fire Explosion" },
+    { "id": 2, "image": "/assets/sample-video-2.jpg", "title": "Neon Glitch" },
+    { "id": 3, "image": "/assets/sample-video-3.jpg", "title": "Diamond Shatter" },
+    { "id": 4, "image": "/assets/sample-video-4.jpg", "title": "Electric Energy" },
+    { "id": 5, "image": "/assets/sample-video-5.jpg", "title": "Smoke Reveal" },
+    { "id": 6, "image": "/assets/sample-video-6.jpg", "title": "Gold Particles" }
+  ],
+  "trendingProducts": [
+    { "id": 1, "slug": "fire-explosion", "name": "Fire Explosion", "image": "/assets/sample-video-1.jpg", "price": 29 },
+    { "id": 2, "slug": "neon-glitch", "name": "Neon Glitch", "image": "/assets/sample-video-2.jpg", "price": 24 },
+    { "id": 3, "slug": "diamond-shatter", "name": "Diamond Shatter", "image": "/assets/sample-video-3.jpg", "price": 34 }
+  ]
+}

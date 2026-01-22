@@ -3,6 +3,7 @@ import { Play } from 'lucide-react';
 
 interface ProductCardProps {
   id: number;
+  slug?: string;
   name: string;
   image: string;
   price: number;
@@ -10,11 +11,12 @@ interface ProductCardProps {
   discount?: number;
 }
 
-const ProductCard = ({ id, name, image, price, originalPrice, discount }: ProductCardProps) => {
+const ProductCard = ({ id, slug, name, image, price, originalPrice, discount }: ProductCardProps) => {
   const discountPercent = discount || Math.round((1 - price / originalPrice) * 100);
+  const productUrl = slug ? `/product/${slug}` : `/product/${id}`;
 
   return (
-    <Link to={`/product/${id}`} className="product-card group block">
+    <Link to={productUrl} className="product-card group block">
       {/* Image Container */}
       <div className="relative aspect-square overflow-hidden">
         <img

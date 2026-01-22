@@ -3,35 +3,15 @@ import { Facebook, Instagram, Twitter, Youtube, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import logo from '@/assets/logo.png';
 import heroBg from '@/assets/hero-bg.jpg';
+import navigationData from '@/data/navigation.json';
+import siteData from '@/data/site.json';
 
-const footerLinks = {
-  shop: [
-    { label: 'All Categories', href: '/categories' },
-    { label: 'Best Sellers', href: '/collection/best-sellers' },
-    { label: 'New Releases', href: '/collection/new-release' },
-    { label: 'Fire Effects', href: '/collection/fire' },
-    { label: 'Neon Effects', href: '/collection/neon' },
-  ],
-  support: [
-    { label: 'Contact Us', href: '/contact' },
-    { label: 'FAQ', href: '/faq' },
-    { label: 'How It Works', href: '/how-it-works' },
-    { label: 'Track Order', href: '/track-order' },
-  ],
-  legal: [
-    { label: 'Refund Policy', href: '/refund-policy' },
-    { label: 'Terms of Service', href: '/terms' },
-    { label: 'Privacy Policy', href: '/privacy' },
-    { label: 'Shipping Policy', href: '/shipping' },
-  ],
+const socialIcons: Record<string, typeof Facebook> = {
+  Facebook,
+  Instagram,
+  Twitter,
+  YouTube: Youtube,
 };
-
-const socialLinks = [
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Youtube, href: '#', label: 'YouTube' },
-];
 
 const Footer = () => {
   return (
@@ -46,7 +26,7 @@ const Footer = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-[hsl(261,60%,20%)] to-transparent" />
         <div className="absolute inset-0 flex items-center justify-center">
           <p className="text-xl md:text-3xl font-display font-bold uppercase tracking-wider">
-            Bring Your Logo to Life
+            {siteData.hero.headline}
           </p>
         </div>
       </div>
@@ -79,24 +59,27 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-t border-white/10">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-          <Link to="/" className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="Digital Work" className="h-10 w-10 rounded-lg" />
-              <span className="font-display text-lg font-bold">DIGITAL WORK</span>
+            <Link to="/" className="flex items-center gap-3 mb-4">
+              <img src={logo} alt={siteData.brand.name} className="h-10 w-10 rounded-lg" />
+              <span className="font-display text-lg font-bold">{siteData.brand.name.toUpperCase()}</span>
             </Link>
             <p className="text-white/60 text-sm mb-4">
-              Premium logo animations & 3D intro videos. Transform your brand with stunning visual effects.
+              {siteData.brand.description}
             </p>
             <div className="flex gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-5 h-5" />
-                </a>
-              ))}
+              {navigationData.socialLinks.map((social) => {
+                const Icon = socialIcons[social.platform];
+                return (
+                  <a
+                    key={social.platform}
+                    href={social.href}
+                    className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors"
+                    aria-label={social.platform}
+                  >
+                    {Icon && <Icon className="w-5 h-5" />}
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -104,7 +87,7 @@ const Footer = () => {
           <div>
             <h4 className="font-display text-lg font-bold mb-4">SHOP</h4>
             <ul className="space-y-2">
-              {footerLinks.shop.map((link) => (
+              {navigationData.footerLinks.shop.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
@@ -121,7 +104,7 @@ const Footer = () => {
           <div>
             <h4 className="font-display text-lg font-bold mb-4">SUPPORT</h4>
             <ul className="space-y-2">
-              {footerLinks.support.map((link) => (
+              {navigationData.footerLinks.support.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
@@ -138,7 +121,7 @@ const Footer = () => {
           <div>
             <h4 className="font-display text-lg font-bold mb-4">LEGAL</h4>
             <ul className="space-y-2">
-              {footerLinks.legal.map((link) => (
+              {navigationData.footerLinks.legal.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
@@ -155,7 +138,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="text-center pt-8 border-t border-white/10">
           <p className="text-white/40 text-sm">
-            © {new Date().getFullYear()} Digital Work. All rights reserved.
+            © {new Date().getFullYear()} {siteData.brand.name}. All rights reserved.
           </p>
         </div>
       </div>

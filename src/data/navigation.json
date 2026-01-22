@@ -1,0 +1,50 @@
+{
+  "mainNav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Categories", "href": "/categories" },
+    { "label": "Best Sellers", "href": "/category/best-sellers" },
+    { "label": "New Releases", "href": "/category/new-release" }
+  ],
+  "footerLinks": {
+    "shop": [
+      { "label": "All Categories", "href": "/categories" },
+      { "label": "Best Sellers", "href": "/category/best-sellers" },
+      { "label": "New Releases", "href": "/category/new-release" },
+      { "label": "Fire Effects", "href": "/category/fire" },
+      { "label": "Neon Effects", "href": "/category/neon" }
+    ],
+    "support": [
+      { "label": "Contact Us", "href": "/contact" },
+      { "label": "FAQ", "href": "/faq" },
+      { "label": "How It Works", "href": "/how-it-works" },
+      { "label": "Track Order", "href": "/track-order" }
+    ],
+    "legal": [
+      { "label": "Refund Policy", "href": "/refund-policy" },
+      { "label": "Terms of Service", "href": "/terms" },
+      { "label": "Privacy Policy", "href": "/privacy" },
+      { "label": "Shipping Policy", "href": "/shipping" }
+    ]
+  },
+  "socialLinks": [
+    { "platform": "Facebook", "href": "#" },
+    { "platform": "Instagram", "href": "#" },
+    { "platform": "Twitter", "href": "#" },
+    { "platform": "YouTube", "href": "#" }
+  ],
+  "announcement": {
+    "message": "🔥 FLASH SALE: Use code",
+    "codes": [
+      { "code": "FLASH10", "discount": "10% OFF" },
+      { "code": "FLASH20", "discount": "20% OFF" },
+      { "code": "FLASH50", "discount": "50% OFF on 10+ videos" }
+    ]
+  },
+  "popularSearches": [
+    "Fire Logo Animation",
+    "Neon Glitch Effect",
+    "Gold Particles",
+    "3D Logo Reveal",
+    "Diamond Glass"
+  ]
+}

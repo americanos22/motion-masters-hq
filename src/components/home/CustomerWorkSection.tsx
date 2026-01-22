@@ -1,5 +1,7 @@
 import { Play } from 'lucide-react';
-import customerWorkGrid from '@/assets/customer-work-grid.jpg';
+import productsData from '@/data/products.json';
+
+// Import images for mapping
 import sampleVideo1 from '@/assets/sample-video-1.jpg';
 import sampleVideo2 from '@/assets/sample-video-2.jpg';
 import sampleVideo3 from '@/assets/sample-video-3.jpg';
@@ -7,14 +9,15 @@ import sampleVideo4 from '@/assets/sample-video-4.jpg';
 import sampleVideo5 from '@/assets/sample-video-5.jpg';
 import sampleVideo6 from '@/assets/sample-video-6.jpg';
 
-const videos = [
-  { id: 1, image: sampleVideo1, title: 'Fire Explosion' },
-  { id: 2, image: sampleVideo2, title: 'Neon Glitch' },
-  { id: 3, image: sampleVideo3, title: 'Diamond Shatter' },
-  { id: 4, image: sampleVideo4, title: 'Electric Energy' },
-  { id: 5, image: sampleVideo5, title: 'Smoke Reveal' },
-  { id: 6, image: sampleVideo6, title: 'Gold Particles' },
-];
+// Map image paths to actual imports
+const imageMap: Record<string, string> = {
+  '/assets/sample-video-1.jpg': sampleVideo1,
+  '/assets/sample-video-2.jpg': sampleVideo2,
+  '/assets/sample-video-3.jpg': sampleVideo3,
+  '/assets/sample-video-4.jpg': sampleVideo4,
+  '/assets/sample-video-5.jpg': sampleVideo5,
+  '/assets/sample-video-6.jpg': sampleVideo6,
+};
 
 const CustomerWorkSection = () => {
   return (
@@ -24,19 +27,19 @@ const CustomerWorkSection = () => {
         <div className="text-center mb-16">
           <h2 className="section-title mb-4">Customer's Work</h2>
           <p className="section-subtitle">
-            See how our clients are using Cheese Motion animations to elevate their brands
+            See how our clients are using Digital Work animations to elevate their brands
           </p>
         </div>
 
         {/* Video Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-          {videos.map((video) => (
+          {productsData.featuredVideos.map((video) => (
             <div
               key={video.id}
               className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer"
             >
               <img
-                src={video.image}
+                src={imageMap[video.image] || sampleVideo1}
                 alt={video.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />

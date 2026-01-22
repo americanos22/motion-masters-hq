@@ -1,42 +1,5 @@
 import PricingCard from '@/components/pricing/PricingCard';
-
-const pricingPlans = [
-  {
-    title: 'Starter',
-    videos: 1,
-    price: 29,
-    originalPrice: 49,
-    featured: false,
-  },
-  {
-    title: 'Duo Pack',
-    videos: 2,
-    price: 49,
-    originalPrice: 89,
-    featured: false,
-  },
-  {
-    title: 'Triple Deal',
-    videos: 3,
-    price: 69,
-    originalPrice: 129,
-    featured: true,
-  },
-  {
-    title: 'Pro Pack',
-    videos: 5,
-    price: 99,
-    originalPrice: 199,
-    featured: false,
-  },
-  {
-    title: 'Agency',
-    videos: 10,
-    price: 179,
-    originalPrice: 399,
-    featured: false,
-  },
-];
+import pricingData from '@/data/pricing.json';
 
 const SpecialOfferSection = () => {
   return (
@@ -52,8 +15,8 @@ const SpecialOfferSection = () => {
 
         {/* Pricing Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {pricingPlans.map((plan) => (
-            <PricingCard key={plan.title} {...plan} />
+          {pricingData.plans.map((plan) => (
+            <PricingCard key={plan.id} {...plan} />
           ))}
         </div>
       </div>
