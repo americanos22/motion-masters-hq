@@ -79,9 +79,9 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-t border-white/10">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <Link to="/" className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="Cheese Motion" className="h-10 w-10 rounded-lg" />
-              <span className="font-display text-lg font-bold">CHEESE MOTION</span>
+          <Link to="/" className="flex items-center gap-3 mb-4">
+              <img src={logo} alt="Digital Work" className="h-10 w-10 rounded-lg" />
+              <span className="font-display text-lg font-bold">DIGITAL WORK</span>
             </Link>
             <p className="text-white/60 text-sm mb-4">
               Premium logo animations & 3D intro videos. Transform your brand with stunning visual effects.
@@ -155,7 +155,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="text-center pt-8 border-t border-white/10">
           <p className="text-white/40 text-sm">
-            © {new Date().getFullYear()} Cheese Motion. All rights reserved.
+            © {new Date().getFullYear()} Digital Work. All rights reserved.
           </p>
         </div>
       </div>
