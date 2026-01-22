@@ -1,28 +1,25 @@
 import { useState } from 'react';
 import { Search, X, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import navigationData from '@/data/navigation.json';
+import productsData from '@/data/products.json';
+
+// Import images for mapping
 import sampleVideo1 from '@/assets/sample-video-1.jpg';
 import sampleVideo2 from '@/assets/sample-video-2.jpg';
 import sampleVideo3 from '@/assets/sample-video-3.jpg';
+
+// Map image paths to actual imports
+const imageMap: Record<string, string> = {
+  '/assets/sample-video-1.jpg': sampleVideo1,
+  '/assets/sample-video-2.jpg': sampleVideo2,
+  '/assets/sample-video-3.jpg': sampleVideo3,
+};
 
 interface SearchOverlayProps {
   open: boolean;
   onClose: () => void;
 }
-
-const popularSearches = [
-  'Fire Logo Animation',
-  'Neon Glitch Effect',
-  'Gold Particles',
-  '3D Logo Reveal',
-  'Diamond Glass',
-];
-
-const recentProducts = [
-  { id: 1, name: 'Fire Explosion', image: sampleVideo1, price: 29 },
-  { id: 2, name: 'Neon Glitch', image: sampleVideo2, price: 24 },
-  { id: 3, name: 'Diamond Shatter', image: sampleVideo3, price: 34 },
-];
 
 const SearchOverlay = ({ open, onClose }: SearchOverlayProps) => {
   const [query, setQuery] = useState('');
@@ -60,7 +57,7 @@ const SearchOverlay = ({ open, onClose }: SearchOverlayProps) => {
               Popular Searches
             </h3>
             <div className="flex flex-wrap gap-2">
-              {popularSearches.map((search) => (
+              {navigationData.popularSearches.map((search) => (
                 <button
                   key={search}
                   onClick={() => setQuery(search)}
@@ -78,16 +75,16 @@ const SearchOverlay = ({ open, onClose }: SearchOverlayProps) => {
               Trending Products
             </h3>
             <div className="grid grid-cols-3 gap-4">
-              {recentProducts.map((product) => (
+              {productsData.trendingProducts.map((product) => (
                 <Link
                   key={product.id}
-                  to={`/product/${product.id}`}
+                  to={`/product/${product.slug}`}
                   onClick={onClose}
                   className="group"
                 >
                   <div className="relative rounded-xl overflow-hidden mb-2">
                     <img
-                      src={product.image}
+                      src={imageMap[product.image] || sampleVideo1}
                       alt={product.name}
                       className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-300"
                     />

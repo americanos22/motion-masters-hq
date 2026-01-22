@@ -4,36 +4,19 @@ import {
   Globe,
   Presentation,
   Tv,
+  LucideIcon,
 } from 'lucide-react';
 import BenefitCard from '@/components/common/BenefitCard';
+import siteData from '@/data/site.json';
 
-const useCases = [
-  {
-    icon: Youtube,
-    title: 'YouTube Intros',
-    description: 'Create professional channel intros that hook viewers from the first second.',
-  },
-  {
-    icon: Instagram,
-    title: 'Social Media',
-    description: 'Stand out on Instagram, TikTok, and Facebook with animated brand content.',
-  },
-  {
-    icon: Globe,
-    title: 'Website Headers',
-    description: 'Add dynamic animated logos to your website for an impressive first impression.',
-  },
-  {
-    icon: Presentation,
-    title: 'Presentations',
-    description: 'Elevate your business presentations with professional animated branding.',
-  },
-  {
-    icon: Tv,
-    title: 'Advertisements',
-    description: 'Create memorable video ads that capture attention and drive conversions.',
-  },
-];
+// Icon mapping
+const iconMap: Record<string, LucideIcon> = {
+  Youtube,
+  Instagram,
+  Globe,
+  Presentation,
+  Tv,
+};
 
 const UseCasesSection = () => {
   return (
@@ -49,8 +32,13 @@ const UseCasesSection = () => {
 
         {/* Use Cases Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {useCases.map((useCase, index) => (
-            <BenefitCard key={index} {...useCase} />
+          {siteData.useCases.map((useCase, index) => (
+            <BenefitCard 
+              key={index} 
+              icon={iconMap[useCase.icon] || Globe}
+              title={useCase.title}
+              description={useCase.description}
+            />
           ))}
         </div>
       </div>

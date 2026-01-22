@@ -4,36 +4,19 @@ import {
   Clock,
   Palette,
   Shield,
+  LucideIcon,
 } from 'lucide-react';
 import BenefitCard from '@/components/common/BenefitCard';
+import siteData from '@/data/site.json';
 
-const benefits = [
-  {
-    icon: Zap,
-    title: 'Stand Out',
-    description: 'Capture attention instantly with eye-catching animated logos that make your brand memorable.',
-  },
-  {
-    icon: Award,
-    title: 'Premium Quality',
-    description: 'Professional-grade animations created with industry-standard tools and techniques.',
-  },
-  {
-    icon: Clock,
-    title: 'Fast Delivery',
-    description: 'Get your animated logo in 72 hours or less. Rush delivery available for urgent projects.',
-  },
-  {
-    icon: Palette,
-    title: '200+ Effects',
-    description: 'Choose from a vast library of animation styles including fire, neon, 3D, particles, and more.',
-  },
-  {
-    icon: Shield,
-    title: 'Commercial License',
-    description: 'Full commercial rights included. Use your animation anywhere without restrictions.',
-  },
-];
+// Icon mapping
+const iconMap: Record<string, LucideIcon> = {
+  Zap,
+  Award,
+  Clock,
+  Palette,
+  Shield,
+};
 
 const BenefitsSection = () => {
   return (
@@ -49,8 +32,13 @@ const BenefitsSection = () => {
 
         {/* Benefits Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {benefits.map((benefit, index) => (
-            <BenefitCard key={index} {...benefit} />
+          {siteData.benefits.map((benefit, index) => (
+            <BenefitCard 
+              key={index} 
+              icon={iconMap[benefit.icon] || Zap}
+              title={benefit.title}
+              description={benefit.description}
+            />
           ))}
         </div>
       </div>

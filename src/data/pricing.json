@@ -1,0 +1,58 @@
+{
+  "plans": [
+    {
+      "id": 1,
+      "title": "Starter",
+      "videos": 1,
+      "price": 29,
+      "originalPrice": 49,
+      "featured": false
+    },
+    {
+      "id": 2,
+      "title": "Duo Pack",
+      "videos": 2,
+      "price": 49,
+      "originalPrice": 89,
+      "featured": false
+    },
+    {
+      "id": 3,
+      "title": "Triple Deal",
+      "videos": 3,
+      "price": 69,
+      "originalPrice": 129,
+      "featured": true
+    },
+    {
+      "id": 4,
+      "title": "Pro Pack",
+      "videos": 5,
+      "price": 99,
+      "originalPrice": 199,
+      "featured": false
+    },
+    {
+      "id": 5,
+      "title": "Agency",
+      "videos": 10,
+      "price": 179,
+      "originalPrice": 399,
+      "featured": false
+    }
+  ],
+  "addons": {
+    "rushDelivery": { "name": "Rush Delivery", "price": 8, "description": "Get your video delivered within 24 hours" },
+    "addText": { "name": "Add Text to Logo", "price": 9, "description": "Add your company name or tagline" },
+    "upgrade4K": { "name": "Upscale to 4K", "price": 15, "description": "Get ultra-high definition 4K video output" },
+    "extraRevision": { "name": "Extra Revision", "price": 12, "description": "Get one additional revision after delivery" },
+    "backgroundMusic": { "name": "Background Music", "price": 5, "description": "Change the background music track" }
+  },
+  "musicOptions": [
+    { "value": "default", "label": "Default Music (Free)", "price": 0 },
+    { "value": "epic", "label": "Epic Cinematic", "price": 5 },
+    { "value": "corporate", "label": "Corporate Upbeat", "price": 5 },
+    { "value": "minimal", "label": "Minimal Tech", "price": 5 },
+    { "value": "none", "label": "No Music", "price": 5 }
+  ]
+}
